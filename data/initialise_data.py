@@ -73,13 +73,13 @@ def write_json_to_file(data, filepath):
         json.dump(data, file, ensure_ascii=False, indent=4)
 
 if __name__ == "__main__":
-  data_array = load_json_file('train.json')
+  data_array = load_json_file('./train.json')
   questions = []
   for item in data_array:
       questions.extend(extract_questions(item))
 
   context = process_training(data_array)
-  write_json_to_file(context, 'contexts.json')
+  write_json_to_file(context, './contexts.json')
   #Remove this limit to generate the full set uf 3900 questions
   limit = 200
-  write_json_to_file(questions[:limit], 'questions.json')
+  write_json_to_file(questions[:limit], './questions.json')
