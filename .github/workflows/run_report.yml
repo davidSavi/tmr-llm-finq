@@ -35,6 +35,6 @@ jobs:
         cd ..
         python generate_reports.py
         cd reports
-        python process_similarity_report.py.py
+        python process_similarity_report.py
         python process_llm_response_report.py
 
