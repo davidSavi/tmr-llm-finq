@@ -31,10 +31,10 @@ jobs:
         PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
       run: |
         cd data
-        python data/initialise_data.py
+        python initialise_data.py
         cd ..
         python generate_reports.py
         cd reports
-        python reports/process_similarity_report.py.py
-        python reports/process_llm_response_report.py
+        python process_similarity_report.py.py
+        python process_llm_response_report.py
 
