@@ -1,0 +1,37 @@
+name: Generate and evaluate reports
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run the script'
+        required: true
+        default: 'np'
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run script with secret
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
+      run: |
+        python data/initialise_data.py
+        python data/generate_reports.py
+        python reports/process_similarity_report.py.py
+        python reports/process_llm_response_report.py
+
