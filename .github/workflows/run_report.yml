@@ -30,9 +30,11 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         PINECONE_API_KEY: ${{ secrets.PINECONE_API_KEY }}
       run: |
-        ls -la
+        cd data
         python data/initialise_data.py
-        python data/generate_reports.py
+        cd ..
+        python generate_reports.py
+        cd reports
         python reports/process_similarity_report.py.py
         python reports/process_llm_response_report.py
 
