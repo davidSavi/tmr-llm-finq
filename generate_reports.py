@@ -85,8 +85,7 @@ def generate_similarity_report(questions):
               "question": question,
               "filename": correct_filename,
               "rank": current_rank,
-              "score": current_score,
-              "similarities_query_result": query_result
+              "score": current_score
           })
           pbar.update(1)
 

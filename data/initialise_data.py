@@ -81,5 +81,5 @@ if __name__ == "__main__":
   context = process_training(data_array)
   write_json_to_file(context, 'contexts.json')
   #Remove this limit to generate the full set uf 3900 questions
-  limit = 200
+  limit = 20
   write_json_to_file(questions[:limit], 'questions.json')
