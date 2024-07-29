@@ -40,6 +40,6 @@ tolerance_percentage = 3
 
 success_count, fail_count = evaluate_list(report, tolerance_percentage)
 
+print(f"Total questions that pass similarity: {len(report)}")
 print(f"Successfully met {tolerance_percentage}% error tolerance: {success_count}")
 print(f"Failed {tolerance_percentage}% error tolerance: {fail_count}")
-print(f"Total items: {len(report)}")
